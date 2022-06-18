@@ -1,0 +1,68 @@
+<md-dialog ng-cloak>
+    <md-toolbar class="md-toolbar-tools d-flex" style="justify-content: space-between;">
+        <h2>{{ producto.nuevo ? 'Nuevo':'Editar' }} Producto</h2>
+    </md-toolbar>
+
+    <md-dialog-content style="width: 620px;">
+        <md-content class="md-padding">
+
+            <div layout="column" ng-cloak class="md-inline-form">
+                <form name="Form" ng-submit="GuardarProducto()">
+                    <h5>Información Básica</h5>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Nombre</label>
+                            <input ng-model="producto.nombre" name="nombre" required>
+                            <div ng-messages="Form.nombre.$error">
+                                <div ng-message="required">Este campo no puede estar vacío</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Código</label>
+                            <input ng-model="producto.codigo" name="codigo" required>
+                            <div ng-messages="Form.codigo.$error">
+                                <div ng-message="required">Este campo no puede estar vacío</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Precio</label>
+                            <input ng-model="producto.precio" name="precio" required>
+                            <div ng-messages="Form.precio.$error">
+                                <div ng-message="required">Este campo no puede estar vacío</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Cantidad</label>
+                            <input type="number" ng-model="producto.cantidad" name="cantidad">
+                            <div ng-messages="Form.cantidad.$error" ng-if="producto.nuevo">
+                                <div ng-message="required">Este campo no puede estar vacío</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Descripción</label>
+                            <input type="text" ng-model="producto.descripcion" name="descripcion" required>
+                            <div ng-messages="Form.descripcion.$error">
+                                <div ng-message="required">Este campo no puede estar vacío</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </form>
+            </div>
+
+        </md-content>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-click="respuesta(false)">Cancelar</md-button>
+        <md-button ng-click="GuardarProducto()" class="text-success">Guardar</md-button>
+        <md-button ng-click="EliminarProducto()" class="text-danger">Eliminar</md-button>
+    </md-dialog-actions>
+</md-dialog>
